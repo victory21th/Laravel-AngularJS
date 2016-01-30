@@ -1,0 +1,63 @@
+<div class="page">
+
+    <section class="panel panel-default">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Edit Enterprise Form</strong></div>
+        <div class="panel-body">
+            <div class="row">
+				<div style="width:300px;" id="" ui-grid="gridOptions" ui-grid-selection class="table table-bordered table-striped table-responsive" external-scopes="$scope"></div>
+                <div class="col-md-8 col-md-offset-2">
+                    <form class="form-horizontal" role="form" ng-submit="editInventorydetails(userForm.$valid)" name = "add_new_enterprise">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-4 control-label">Product<span class="text-danger"> *</span></label>
+							<input type="hidden" class="form-control" id="inventoryid" name="inventoryid"  ng-model="inventoryDetails.inventoryid">
+                            <div class="col-sm-8">
+                                <select class="form-control" name="product" ng-model="inventoryDetails.product" ng-options="response.id as response.name for response in product_list" ng-required="true">
+                                    <option value="">--- Select Product ---</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="warehouse" class="col-sm-4 control-label">Warehouse<span class="text-danger"> *</span></label>
+                            <div class="col-sm-8">
+                                <select class="form-control" name="warehouse" ng-model="inventoryDetails.warehouse" ng-options="response.id as response.name for response in warehouse_list" ng-required="true">
+                                    <option value="">--- Select Warehouse ---</option>
+                                </select>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label for="channel" class="col-sm-4 control-label">Channel<span class="text-danger"> *</span></label>
+                            <div class="col-sm-8">
+                                <select class="form-control" name="channel" ng-model="inventoryDetails.channel" ng-options="response.id as response.name for response in channel_list" ng-required="true">
+                                    <option value="">--- Select Channel ---</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="stock_count" class="col-sm-4 control-label">Stock Count<span class="text-danger"></label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" id="stock_count" placeholder="Stock Count" name="stock_count" ng-model="inventoryDetails.stock_count">
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label for="re_order_level" class="col-sm-4 control-label">Re-Order Level<span class="text-danger"></label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" id="re_order_level" placeholder="Re-Order Level" name="re_order_level" ng-model="inventoryDetails.re_order_level">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success btn-w-md">Update</button>
+                                <input type = "button" data-ng-click="cancelInventoryEdit()" class="btn btn-default btn-w-md"  value="Cancel"></input>
+                            </div>
+                        </div>
+                    </form>  
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

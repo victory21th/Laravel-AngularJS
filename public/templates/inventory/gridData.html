@@ -1,0 +1,22 @@
+<div class="page page-form">
+    <div class="row">
+        <div class="col-md-12" ng-submit="advacedSearch()">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+					<strong> Inventory List</strong>
+					<a ui-sref="newInventory">
+						<button style = "background: none repeat scroll 0 0 #2c2b30; float:right; margin-top: -7px; color: white" name = "print_grid_result" id = "print_grid_result" ng-model = "print_result" ng-click = "print_grid_result()" class="btn" ng-show="allowInvAdd">
+							<span class="glyphicon glyphicon-plus"></span> Add New Inventory  
+						</button>
+					</a>
+				</div>
+				
+                <div class="panel-body">
+					<section class="table-flip-scroll">
+						<div id="gridData" ui-grid="gridOptions" ui-grid-selection class="table table-bordered table-striped table-responsive" external-scopes="$scope" style= "height:410px"></div>
+					</section>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+	
+	<div class="page">
+    <section class="panel panel-default">
+        <div class="panel-body">
+		<style>	
+			form {
+			  border : 1px solid #C0C0C0;
+			  padding: 50px;
+			} 
+			</style>
+			<form class="form-horizontal">
+            <div class="row">
+			
+				<div class="form-group">
+				
+					<div class="form-group" >
+						<label for="inputPassword3" class="col-sm-12 text-left" style="color:#0955d1">Shipment Box Item Details</label>
+					</div>
+					<div class="col-md-8 col-md-offset-2">
+						<button data-ng-click="cancelShipmentbxitemview()" class="btn btn-default btn-w-md" style="color:#fff;background-color:#a0a0a0" ><span class="glyphicon glyphicon-arrow-left"></span> Back</button> 
+						<div id="shipmentBox Details">						
+								
+								<table style="margin-top:30px" class="table table-bordered table-striped table-responsive">
+								<thead>								
+										<th>Item Name</th>                      
+																	
+										<th>Shipment Qty</th>                      
+													
+										<!-- <th>Options</th> -->
+								</thead>
+								<tbody>
+									<tr data-ng-repeat="item_Details in items_box_qty">										
+											<td>{{item_Details.itmname}}</td>
+											<td>{{item_Details.shipmentqty}}</td>
+											<!-- <td><p name="order">Delete</p> </td> -->										
+									</tr>
+								</tbody>
+							</table>
+
+						</div>							
+						
+					</div>
+				
+				</div>
+				
+            </div>
+				</form>
+        </div>
+    </section>
+</div>

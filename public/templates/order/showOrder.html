@@ -1,0 +1,213 @@
+<div class="page">
+    <section class="panel panel-default">
+        <div class="panel-heading">
+			<strong>
+				<span class="glyphicon glyphicon-th"></span>Order View
+			</strong>
+			<div class="form-group" style = "background: none repeat scroll 0 0 #2c2b30; float:right; margin-top: -7px; color: white" >							
+				<div class="row">  					
+					<div class="col-md-12">
+					  	<div class="form-group">
+							<label for="inputPassword3" class="col-sm-3" style="padding-top:7px">Status<span class="text-danger" > *</span></label>
+								<div class="col-sm-5">
+									<select class="form-control" style="color:#000000;" name="status_name" ng-model="editOrderdetails.status_name" ng-required="true" data-ng-disabled="!allowOrderStatusChange" ng-options="response.id as response.name for response in status_list">
+										<option value="">--- Select Status ---</option>
+									</select>
+								</div>
+								
+								<div class="col-sm-3">									
+									<input type = "button" ng-click="updateStatus()" class="btn btn-default btn-w-md btn-primary"  value="Update" data-ng-disabled="!allowOrderStatusChange"></input>
+								</div>   
+						</div>						
+					</div>				
+				</div> 
+			</div>
+		</div>
+		<div class="panel-body">
+				<style>	
+					form {
+					  border : 1px solid #C0C0C0;
+					  padding: 50px;					 
+					} 
+				</style>			
+			<div class="row">
+                    <div class="form-group" style="margin-left:0px;margin-top:0px">				
+					<div class="col-md-12">					
+						<form class="form-horizontal" role="form" ng-submit="editOrderdtl(userForm.$valid)" name = "add_new_order">
+							<div class="form-group">							
+								<div class="row" >                              									
+									<div class="col-md-6">
+									   <div class="form-group">											
+											<input type="hidden" class="form-control" id="jobid" name="jobid"  ng-model="editOrderdetails.jobid"> 
+											<input type="hidden" class="form-control" id="orderid" name="orderid"  ng-model="editOrderdetails.orderid"> 
+											<input type="hidden" class="form-control" id="companyid" name="companyid"  ng-model="orderdetails.companyid">
+											<input type="hidden" class="form-control" id="channel_id" name="channel_id"  ng-model="orderdetails.channel_id">
+										</div>
+									</div>
+								</div>							 
+							</div> 	
+							
+							<div class="form-group">		
+								<label for="inputPassword3" class="col-sm-12" style="color:#0955d1;margin-top:-60px">Order Details</label>
+							</div>
+							
+							<table class="table table-bordered table-striped table-responsive" style="width:100%;margin-top:-40px">
+								<thead>	
+									<tr>
+										<th width="20%" >Order No  <td  width="30%">{{editOrderdetails.orderid}}</td> </th>	
+										<th width="20%" >Order Date  <td  width="30%">{{editOrderdetails.orderdate}}</td> </th>															
+									</tr>	
+									
+									<tr>
+										<th width="20%">Channel Name <td  width="30%">{{editOrderdetails.channel_name}}</td></th>	
+										
+									</tr>	
+								
+								</thead>							
+							</table>
+							
+							<div class="form-group" style="margin-top:-1px">		
+								<label for="inputPassword3" class="col-sm-12" style="color:#0955d1;margin-top:-10px">Shipment Details</label>
+							</div>
+							
+							<table class="table table-bordered table-striped table-responsive" style="width:100%">
+								<thead>	
+									<tr>
+										<th width="20%" >Requested Shipment Date  <td  width="30%">{{editOrderdetails.shipment_date}}</td> </th>	
+										<th width="20%" >Name  <td  width="30%">{{editOrderdetails.name}}</td> </th>															
+									</tr>	
+									
+									<tr>
+										<th>Company <td>{{editOrderdetails.shipcompany}}</td></th>	
+										<th>Address  <td>{{editOrderdetails.shippingaddress}}</td> </th>																
+									</tr>
+
+									<tr>
+										<th>Address2 <td>{{editOrderdetails.shippingaddress2}}</td></th>	
+										<th>City  <td>{{editOrderdetails.shipcity}}</td> </th>																
+									</tr>
+									
+									<tr>
+										<th>State <td>{{editOrderdetails.shipstate}}</td></th>	
+										<th>Country  <td>{{editOrderdetails.shipcountry}}</td> </th>																
+									</tr>
+									<tr>
+										<th>Email <td>{{editOrderdetails.shipemail}}</td></th>	
+										<th>Zip Code  <td>{{editOrderdetails.shipzip}}</td> </th>																
+									</tr>								
+								
+								</thead>							
+							</table>						
+							
+							<div class="form-group" style="margin-top:5px">		
+								<label for="inputPassword3" class="col-sm-12" style="color:#0955d1;margin-top:-10px">Billing Details</label>
+							</div>
+							
+							<table class="table table-bordered table-striped table-responsive" style="width:100%">
+								<thead>	
+									<tr>
+										<th width="20%" >Name  <td  width="30%">{{editOrderdetails.billname}}</td> </th>	
+										<th width="20%" >Company  <td  width="30%">{{editOrderdetails.billcompany}}</td> </th>															
+									</tr>	
+									
+									<tr>
+										<th>Address 1 <td>{{editOrderdetails.billaddress}}</td></th>	
+										<th>Address 2  <td>{{editOrderdetails.billaddress2}}</td> </th>																
+									</tr>
+
+									<tr>
+										<th>City <td>{{editOrderdetails.billcity}}</td></th>	
+										<th>State  <td>{{editOrderdetails.billstate}}</td> </th>																
+									</tr>
+									
+									<tr>
+										<th>Country <td>{{editOrderdetails.billcountry}}</td></th>	
+										<th>Email  <td>{{editOrderdetails.billemail}}</td> </th>																
+									</tr>
+									<tr>
+										<th>Zip Code <td>{{editOrderdetails.billzip}}</td></th>	
+										<th>Phone  <td>{{editOrderdetails.billphone}}</td> </th>																
+									</tr>
+
+									<tr>
+										<th>Referende Order No <td>{{editOrderdetails.ref_order_id}}</td></th>	
+										<th>Order Total  <td>{{editOrderdetails.ordertotal}}</td> </th>																
+									</tr>
+									
+									<tr>
+										<th>Actual Shipment Price <td>{{editOrderdetails.total_shipment_price}}</td></th>	
+										<th>Total Shipment Cost <td>{{editOrderdetails.tot_ship_cost}}</td> </th>																
+									</tr>
+								
+								</thead>							
+							</table>																				 
+
+							<div class="form-group" style="margin-top:-1px">		
+								<label for="inputPassword3" class="col-sm-12" style="color:#0955d1;margin-top:-10px">Carrier Details</label>
+							</div>
+							
+							
+							<table class="table table-bordered table-striped table-responsive" style="width:100%">
+								<thead>	
+									<tr>
+										<th width="20%" >Carrier Name <td  width="30%">{{editOrderdetails.carrier_name}}</td> </th>	
+										<th width="20%" >Carrier Service Name  <td  width="30%">{{editOrderdetails.carrier_service_name}}</td> </th>															
+									</tr>	
+									
+									<tr>
+										<th width="20%">Comments <td  width="30%">{{editOrderdetails.comments}}</td></th>	
+										<th>Created Date <td>{{editOrderdetails.created_date}}</td> </th>																
+									</tr>	
+									
+									<tr>
+										<th width="20%">Modified Date <td  width="30%">{{editOrderdetails.modified_date}}</td></th>	
+																					
+									</tr>
+								
+								</thead>							
+							</table>						
+
+							<div class="form-group" style="margin-top:-1px">		
+								<label for="inputPassword3" class="col-sm-12" style="color:#0955d1;margin-top:-10px">Order Item Details</label>
+							</div>							
+												
+							<table class="table table-bordered table-striped table-responsive">
+								<thead>								
+									<th>Item Name</th>  															
+									<th>Item Description</th>  															
+									<th>SKU</th>
+									<th>Unit Weight</th> 	
+									<th>Item Price</th> 
+									<th>Order Qty</th>
+									<th>Order Balance Qty</th> 
+								</thead>
+								
+								<tbody>
+									<tr data-ng-repeat="item_Details in response_order_array">
+										<td>{{item_Details.ItemName}}</td>
+										<td>{{item_Details.ItemDescription}}</td>	
+										<td>{{item_Details.SKU}}</td>										
+										<td>{{item_Details.UnitWeight}}</td>
+										<td>{{item_Details.ItemPrice}}</td>
+										<td>{{item_Details.Order_Qty}}</td>											
+										<td>{{item_Details.Balance_Qty}}</td>
+									</tr>
+								</tbody>
+							</table>
+							
+							<div class="form-group" style="margin-bottom:-30px">
+								<div align="center">								
+									<button type="submit" class="btn btn-default btn-w-md btn-primary" data-ng-show="allowOrderEditDelete">Edit</button>
+									<input type = "button" data-ng-click="deleteOrderDetails()" class="btn btn-default btn-w-md btn-danger"  value="Delete" data-ng-show="allowOrderEditDelete"></input>
+									<input type = "button" ng-click="createShipement()" class="btn btn-default btn-w-md btn-success"  value="Shipment" data-ng-show="allowOrderShipAdd"></input>
+									<button data-ng-click="cancelOrderEdit()" class="btn btn-default btn-w-md" style="color:#fff;background-color:#a0a0a0"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
+								</div>
+							</div> 								
+						</form>					
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+</div>

@@ -1,0 +1,71 @@
+<div class="page">
+    <section class="panel panel-default">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Inventory View</strong></div>
+			<div class="panel-body">
+			<style>	
+			form {
+			  border : 1px solid #C0C0C0;
+			  padding: 50px;
+			     padding-bottom: 0px;
+			} 
+			</style>
+			
+            <div class="row">
+                <div class="form-group" style="margin-left:0px">					
+					<div class="col-md-12">
+					<form class="form-horizontal" role="form" ng-submit="editInventorydetails(userForm.$valid)" name = "add_new_enterprise">
+							<table class="table table-bordered table-striped table-responsive" style="width:100%;margin-top:-30px">
+								<thead>	
+									<tr>
+										<th width="20%" >Inventory No  <td  width="30%">{{inventoryDetails.inventoryid}}</td> </th>	
+										<th width="20%" >Channel Name <td  width="30%">{{inventoryDetails.channel}}</td> </th>															
+									</tr>	
+									
+									<tr>
+										<th width="20%">Warehouse Name<td  width="30%">{{inventoryDetails.warehouse}}</td></th>	
+										<th>Product Name <td>{{inventoryDetails.product}}</td> </th>																
+									</tr>	
+									
+									<tr>
+									<th>Product Descriptions <td>{{inventoryDetails.product_desc}}</td></th>	
+									<th>SKU  <td>{{inventoryDetails.product_sku}}</td> </th>															
+														
+									</tr>	
+									<tr>
+										<th>Unit Weight <td>{{inventoryDetails.product_UnitWeight}}</td></th>		
+										<th>Product Ref Id  <td>{{inventoryDetails.inventoryid}}</td> </th>															
+									</tr>	
+									
+									<tr>
+										<th>Quantity On Hand <td>{{inventoryDetails.stock_count}}</td></th>		
+										<th>Re-Order Level  <td>{{inventoryDetails.re_order_level}}</td> </th>																
+									</tr>
+									
+									<tr>
+										<th>Last Cycle Count <td>{{inventoryDetails.LastCycleCount}}</td></th>
+										<th>Last Adjustment Count  <td>{{inventoryDetails.LastAdjustmentCount}}</td> </th>															
+									</tr>	
+									<tr>
+										<th>Notes <td>{{inventoryDetails.notes}}</td></th>	
+										<th>Reason  <td>{{inventoryDetails.reason}}</td> </th>																
+									</tr>								
+									
+								</thead>							
+							</table>
+							
+							<div class="form-group" style="margin-left:300px" >
+								<div class="col-sm-12" >
+									<button type="submit" class="btn btn-default btn-w-md btn-primary" data-ng-show="authAllowEditDelete">Edit</button>
+									<input type = "button" data-ng-click="deleteInventoryDetails()" class="btn btn-default btn-w-md btn-danger"  value="Delete" data-ng-show="authAllowEditDelete"></input>
+									<button data-ng-click="cancelInventoryEdit()" class="btn btn-default btn-w-md" style="color:#fff;background-color:#a0a0a0" ><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
+								</div>
+							</div>						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+				
+		
+	</section>
+</div>

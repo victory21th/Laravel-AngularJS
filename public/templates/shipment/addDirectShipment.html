@@ -1,0 +1,372 @@
+<div class="page">
+    <section class="panel panel-default">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span>Add Direct Shipment</strong></div>
+			<div class="panel-body">
+				<style>	
+					form {
+					  border : 1px solid #C0C0C0;
+					  padding: 50px;
+					  padding-bottom: 0px;
+					} 
+				</style>			
+			<div class="row">
+                <div class="form-group">					
+					<div class="col-md-12">					
+                    <form class="form-horizontal" role="form" ng-submit="adddirectshipmentdetails(userForm.$valid)" name = "add_new_order">
+						<div class="form-group" style="margin-top:-30px" >							
+							<div class="row" >                              									
+								 <div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">
+											<label for="dateofshipment" class="col-sm-4">Date of Shipment <span class="text-danger"> *</span></label>
+											<div class="col-sm-8" data-ng-controller="DatepickerDemoCtrl">
+												<div class="input-group ui-datepicker">
+													<input type="text" 
+														   class="form-control"
+														   datepicker-popup=""
+														   name="date_of_shipment"
+														   format ="YYYY-MM-DD"
+														   ng-model="shipmentdetails.date_of_shipment"
+														   is-open="opened"
+														   datepicker-options="dateOptions" 
+														   date-disabled="disabled(date, mode)" 
+														   disabled="disabled"
+														   close-text="Close"
+														   required="required"
+														   ng-required="true">
+													<span class="input-group-addon" ng-click="open($event)"><i class="fa fa-calendar"></i></span>
+												</div>
+											</div>     
+										</div>
+									</div>
+								</div>								
+								
+							    <div class="col-md-6">
+                                    <label for="order" class="col-sm-4">Channel Name<span class="text-danger"> *</span></label>
+										<div class="col-sm-8">
+										    <select class="form-control" name="channel_name" ng-change="channelSelect()" ng-model="shipmentdetails.channel_name" ng-options="response.id as response.name for response in channel_lists" ng-required="true">
+												<option value="">--- Select Channel Name ---</option>
+										    </select>
+										</div>
+								</div> 								
+							</div>	 
+                        </div> 
+						
+						<div class="form-group" style="margin-top:-15px">							
+							<div class="row">                              									
+								<div class="col-md-6">
+                                    <div class="form-group" >
+										<div class="col-sm-12">
+											<label for="warehouse" class="col-sm-4">Warehouse Name<span class="text-danger"> *</span></label>
+												<div class="col-sm-8">
+													<select class="form-control" name="warehouse" ng-change="warehouseSelect()"  ng-model="shipmentdetails.warehouse" ng-options="response.id as response.name for response in warehouse_lists" ng-required="true">
+														<option value="">--- Select Warehouse ---</option>
+													</select>
+												</div>
+										</div>
+									</div>
+								</div>															
+							</div>	 
+                        </div> 						
+											
+						<div class="form-group" style="margin-top:-1px">		
+							<label for="inputPassword3" class="col-sm-12" style="color:#0955d1;margin-top:-25px">Shipment Details</label>
+						</div>
+						
+						<div class="form-group" style="margin-top:-1px">								
+							<div class="row">                              									
+								<div class="col-md-6">
+                                    <div class="form-group">
+										<div class="col-sm-12">
+											<label for="recipient_name" class="col-sm-4">Recipient Name<span class="text-danger"> *</span></label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control" id="recipient_name" placeholder="Recipient Name" name="recipient_name"  ng-model="shipmentdetails.recipient_name"
+													    ng-minlength="2" ng-maxlength="50" required>
+													    <span class="error" ng-show="add_new_direct_shipment.recipient_name.$error.maxlength">Recipient Name is Too long!</span>
+														<span class="error" ng-show="add_new_direct_shipment.recipient_name.$error.minlength">Recipient Name is Too short!</span>
+												</div>
+										</div>
+									</div>								
+								</div>
+							    <div class="col-md-6">									
+								</div> 								
+							</div>	 
+                        </div>
+
+						<div class="form-group" style="margin-top:-15px">								
+							<div class="row">                              									
+								<div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">
+											<label for="shippingaddress" class="col-sm-4"> Address 1<span class="text-danger"> *</span></label>
+												<div class="col-sm-8">
+													<textarea name="shippingaddress" id="shippingaddress" placeholder="Address1" class="form-control" rows="2" ng-model="shipmentdetails.shippingaddress" ng-required="true" ng-minlength="2" ng-maxlength="50"></textarea>
+													<span class="error" ng-show="add_new_direct_shipment.shippingaddress.$error.maxlength">Address 1 is Too long!</span>
+													<span class="error" ng-show="add_new_direct_shipment.shippingaddress.$error.minlength">Address 1 is Too short!</span>
+												</div>
+										</div>
+									</div>
+								</div>								
+								
+							    <div class="col-md-6">
+									<label for="shippingaddress2" class="col-sm-4"> Address 2</label>
+										<div class="col-sm-8">
+											<textarea name="shippingaddress2" id="shippingaddress2" placeholder="Address2" class="form-control" rows="2" ng-model="shipmentdetails.shippingaddress2"></textarea>
+											<span class="error" ng-show="add_new_direct_shipment.shippingaddress2.$error.maxlength">Address 2 is Too long!</span>
+											<span class="error" ng-show="add_new_direct_shipment.shippingaddress2.$error.minlength">Address 2 is Too short!</span>
+										</div>
+								</div> 								
+							</div>	 
+                        </div> 
+						
+						
+						
+						<div class="form-group" style="margin-top:-15px">								
+							<div class="row">                              									
+								 <div class="col-md-6">
+                                    <div class="form-group">
+										<div class="col-sm-12">
+											<label for="shipstate" class="col-sm-4"> City<span class="text-danger"> </span></label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control" id="shipcity" placeholder="City" name="shipcity"  ng-model="shipmentdetails.shipcity" 
+													ng-minlength="2" ng-maxlength="25" >
+													<span class="error" ng-show="add_new_direct_shipment.shipcity.$error.maxlength">City Name is Too long!</span>
+													<span class="error" ng-show="add_new_direct_shipment.shipcity.$error.minlength">City Name is Too short!</span>
+									
+											</div>
+										</div>
+									</div>								
+								</div>
+							    <div class="col-md-6">
+									<label for="shipstate" class="col-sm-4"> State<span class="text-danger"> </span></label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="shipstate" placeholder="State" name="shipstate"  ng-model="shipmentdetails.shipstate" 
+											   ng-minlength="2" ng-maxlength="25" >
+												<span class="error" ng-show="add_new_direct_shipment.shipstate.$error.maxlength">State Name is Too long!</span>
+												<span class="error" ng-show="add_new_direct_shipment.shipstate.$error.minlength">State Name is Too short!</span>
+										</div>
+								</div> 								
+							</div>	 
+                        </div> 
+						
+						<div class="form-group" style="margin-top:-15px">								
+							<div class="row">                              									
+								 <div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">
+											<label for="shipcountry" class="col-sm-4"> Country<span class="text-danger"> </span></label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control" id="shipcountry" placeholder="Country" name="shipcountry"  ng-model="shipmentdetails.shipcountry" 
+													   ng-minlength="2" ng-maxlength="30" >
+													   <span class="error" ng-show="add_new_direct_shipment.shipcountry.$error.maxlength">Country Name is Too long!</span>
+													<span class="error" ng-show="add_new_direct_shipment.shipcountry.$error.minlength">Country Name is Too short!</span>
+												</div>	
+										</div>
+									</div>
+								</div>								
+								
+							    <div class="col-md-6">
+									<label for="ship_email" class="col-sm-4"> Email<span class="text-danger"> </span></label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="ship_email" placeholder="Email" name="ship_email"  ng-model="shipmentdetails.ship_email" 
+											   ng-minlength="1" ng-maxlength="45">
+											   <!-- <span class="error" ng-show="add_new_direct_shipment.ship_email.$error.maxlength">Email-Id is Too long!</span>
+												<span class="error" ng-show="add_new_direct_shipment.ship_email.$error.minlength">Email-Id is Too short!</span>
+												<span ng-show="add_new_direct_shipment.ship_email.$error.pattern">Wrong Email-Id format for eg:abc@gmail.com</span> -->
+										</div>								
+								</div> 								
+							</div>	 
+                        </div> 						
+							
+						<div class="form-group" style="margin-top:-15px">								
+							<div class="row">                              									
+								<div class="col-md-6">
+                                    <div class="form-group">
+										<div class="col-sm-12">
+											<label for="shipzip" class="col-sm-4"> Zip Code<span class="text-danger"> </span></label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control" id="shipzip" placeholder="Zip Code" name="shipzip"  ng-model="shipmentdetails.shipzip" 
+													   ng-minlength="2" ng-maxlength="10" >
+														<span class="error" ng-show="add_new_direct_shipment.shipzip.$error.maxlength">Zip Code is Too long!</span>
+														<span class="error" ng-show="add_new_direct_shipment.shipzip.$error.minlength">Zip Code is Too short!</span>
+												</div>
+										</div>
+									</div>
+								</div>								
+								
+							    <div class="col-md-6">
+									
+								</div> 								
+							</div>	 
+                        </div> 
+						
+						<div class="form-group" style="margin-top:-15px">		
+							<label for="inputPassword3" class="col-sm-12" style="color:#0955d1;margin-top:-10px">Billing Details</label>
+						</div>
+						
+						<div class="form-group">							
+							<div class="row">                              									
+								<div class="col-md-6">
+                                    <div class="form-group">
+										<div class="col-sm-12">
+											<label for="shipping_account" class="col-sm-4"> Account<span class="text-danger"> </span></label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control" id="shipping_account" placeholder=" Account" name="shipping_account"  ng-model="shipmentdetails.shipping_account" 
+												   ng-minlength="1" ng-maxlength="45" >
+													<span class="error" ng-show="add_new_direct_shipment.shipping_account.$error.maxlength">Shipping Account is Too long!</span>
+												<span class="error" ng-show="add_new_direct_shipment.shipping_account.$error.minlength">Shiping Accountis Too short!</span>
+											</div>
+										</div>
+									</div>
+								</div>								
+								
+							    <div class="col-md-6">
+                                <label for="Tracking Number" class="col-sm-4">Tracking Number</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="tracking_number" name="tracking_number" ng-model="shipmentdetails.tracking_number" placeholder="Tracking Number" ng-minlength="1" ng-maxlength="45" >
+										    <!-- <span class="error" ng-show="add_new_direct_shipment.tracking_number.$error.maxlength">Shipping Account is Too long!</span>
+											<span class="error" ng-show="add_new_direct_shipment.tracking_number.$error.minlength">Shiping Accountis Too short!</span> -->
+								   </div>
+								</div> 								
+							</div>	 
+                        </div> 
+						
+						<div class="form-group" style="margin-top:-15px">							
+							<div class="row">                              									
+								<div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">
+										<label for="signature_required" class="col-sm-4">Signature Required<span class="text-danger"> * </span></label>
+										<div class="col-sm-8">
+											<select class="form-control" name="signature_required" ng-model="shipmentdetails.signature_required" ng-required="true">
+												<option value="">--- Select Signature ---</option>
+												<option value="1">Required</option>
+												<option value="2">Not Required</option>
+											</select>
+										</div>
+										</div>
+									</div>
+								</div>								
+								
+							    <div class="col-md-6">
+								<label for="email_notification" class="col-sm-4">Email Notification<span class="text-danger"> * </span></label>
+									<div class="col-sm-8">
+										<select class="form-control" name="email_notification" ng-model="shipmentdetails.email_notification" ng-required="true">
+											<option value="">--- Select Email Notification ---</option>
+											<option value="1">Notify</option>
+											<option value="2">Do Not Notify</option>
+										</select>
+									</div>	
+								</div> 								
+							</div>	 
+                        </div>
+						
+						<div class="form-group" style="margin-top:-15px">								
+							<div class="row">                              									
+								<div class="col-md-6">
+                                    <div class="form-group">
+										<div class="col-sm-12">
+										<label for="shipping_cost" class="col-sm-4">Shipment Cost<span class="text-danger"> *</span></label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control" id="shipping_cost" placeholder="Shipment Cost"  name="shipment_cost" ng-model="shipmentdetails.shipment_cost" required >
+											</div>
+										</div>
+									</div>
+								</div>								
+								
+							    <div class="col-md-6">
+									<label for="actual_shipment_cost" class="col-sm-4">Actual Shipment <br> Cost<span class="text-danger"> *</span></label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="actual_shipment_cost" placeholder="Actual Shipment Cost"  name="actual_shipment_cost" ng-model="shipmentdetails.actual_shipment_cost" required>                           
+										</div>
+								</div> 								
+							</div>	 
+                        </div> 						
+											
+						<div class="form-group" style="margin-top:-15px">		
+							<label for="inputPassword3" class="col-sm-12" style="color:#0955d1;margin-top:-10px">Carrier Details</label>
+						</div>
+						
+						<div class="form-group" style="margin-top:-1px">									
+							<div class="row">                              									
+								 <div class="col-md-6">
+                                    <div class="form-group">
+										<div class="col-sm-12">
+											<label for="order" class="col-sm-4">Carrier Name<span class="text-danger"> *</span></label>
+												<div class="col-sm-8">
+													<select class="form-control" name="carrier_name" ng-model="shipmentdetails.carrier_name" ng-options="response.id as response.name for response in carrier_list" ng-required="true">
+														<option value="">--- Select Carrier Name ---</option>
+													</select>
+												</div>
+										</div>
+									</div>
+								</div>								
+								
+							    <div class="col-md-6">
+									<label for="order" class="col-sm-4">Carrier Service <br> Name<span class="text-danger"> *</span></label>
+									<div class="col-sm-8">
+									    <select class="form-control" name="carrier_service_name" ng-model="shipmentdetails.carrier_service_name" ng-options="response.id as response.name for response in carrier_service_list" ng-required="true">
+											<option value="">--- Select Carrier Service Name ---</option>
+									    </select>
+									</div>
+								</div> 								
+							</div>	 
+                        </div> 						
+						
+						<div class="form-group" style="margin-top:-15px">									
+							<div class="row">                              									
+								<div class="col-md-6">
+                                    <div class="form-group">
+										<div class="col-sm-12">
+										    <label for="lastname" class="col-sm-4">Additional Notes </label>
+												<div class="col-sm-8">
+													<textarea name="additional_notes" id="additional_notes" placeholder="Additional Notes" class="form-control" rows="2" ng-model="shipmentdetails.additional_notes" ng-minlength="2" ng-maxlength="100"></textarea>
+														<span class="error" ng-show="add_new_direct_shipment.additional_notes.$error.maxlength">Shipping Account is Too long!</span>
+														<span class="error" ng-show="add_new_direct_shipment.additional_notes.$error.minlength">Shiping Accountis Too short!</span>
+												</div>
+										</div>
+									</div>							    								
+								</div>	 
+							</div> 
+						</div>
+						
+						<div class="form-group">
+							<label for="order" class="col-sm-4" style="color:#0955d1;margin-top:-20px"><strong>Direct Shipment Item Details</strong></label>
+						</div>
+
+						<div class="form-group" style="margin-top:-15px;margin-bottom:-5px">							                  
+							<div class="col-sm-5">
+								 <label for="Item Name" >Item Name</label>
+							</div>
+							
+							<div class="col-sm-3">
+								 <label for="comments" >Available Qty</label>
+							</div>
+							
+							<div class="col-sm-3">
+								 <label for="Order Qty" >Shipping Qty</label>
+							</div>							
+						</div>
+												
+						<div id="directitems" class="add-additional-Item"></div>
+							
+						<div class="form-group">
+							<div align="center">
+								<input type = "button" data-ng-click="addAdditionalProduct()" class="btn btn-default btn-w-md" style="color:#fff;background-color:#999999"  value="Add Item"></input>
+							</div>
+						</div>						
+						
+                        <div class="form-group">
+                            <div align="center">
+								<button id="submit"	type="submit" class="btn btn-success btn-w-md" >Save</button>
+								<input type = "button"   data-ng-click="cancelAdd()" class="btn btn-default btn-w-md" style="color:#fff;background-color:#a0a0a0" value="Cancel"></input>
+                            </div>
+                        </div>					
+					</form>					
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</section>
+</div>

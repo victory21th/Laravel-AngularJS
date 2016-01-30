@@ -1,0 +1,123 @@
+<!-- 
+	File Name 			: 	addProduct.html
+	File Description	:	Form to Add New Product Details
+	Created Date 		:	05 - Dec - 2014
+	Company				:	iExemplar
+	Created By			:	Manthiriyappan A
+	Contributors		:	Manthiriyappan A
+ -->
+<div class="page">
+    <section class="panel panel-default">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Add Product</strong></div>
+			<div class="panel-body">
+			<style>	
+			form {
+			border : 1px solid #C0C0C0;
+			padding: 50px;
+		    padding-bottom: 0px;
+			} 
+			</style>
+			<div class="row">
+                <div class="form-group">					
+					<div class="col-md-12">
+					<form class="form-horizontal" role="form" ng-submit="addProductDetails(userForm.$valid)" name = "add_new_product">
+						<div class="alert" ng-show="flash.getMessage()">
+							<b>Alert!</b>
+							<p>{{flash.getMessage()}}</p>
+						</div>	
+							<div class="form-group" style="margin-top:-30px">											
+							<div class="row">                              									
+								<div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">
+											<label for="product" class="col-sm-4">Product Name<span class="text-danger"> *</span></label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control" id="product" placeholder="Product Name" name="product" ng-model="productDetails.product" ng-required="true" ng-maxlength="50">
+												</div>
+										</div>
+									</div>
+								</div>								
+								
+							    <div class="col-md-6">
+                                   <label for="channel" class="col-sm-4">Channel<span class="text-danger"> *</span></label>
+										<div class="col-sm-8">
+											<select class="form-control" name="channel" ng-model="productDetails.channel" 
+											ng-options="response.id as response.name for response in channel_list" ng-required="true" ng-change="getproductByChannel();">
+												<option value="">--- Select Channel ---</option>
+											</select>
+										</div>							
+								</div>	 
+							</div> 
+							
+							<div class="row">                              									
+								<div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">
+											 <label for="price" class="col-sm-4">Price <span class="text-danger"> *</span></label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control" id="price" placeholder="Price" ng-pattern ="/^[0-9,-]*$/" name="price" ng-model="productDetails.price" ng-required="false" ng-maxlength="11">
+													 <span class="error" ng-show="add_new_product.price.$error.maxlength">Quantity On Hand is Too long!</span>
+													 <span ng-show="add_new_product.price.$error.pattern">Allow Only Numeric </span>
+												</div>
+										</div>
+									</div>
+								</div>								
+								
+							    <div class="col-md-6">
+                                    <label for="sku" class="col-sm-4">SKU<span class="text-danger"> *</span></label>
+										<div class="col-sm-8">  
+											<input type="text" class="form-control" id="sku" placeholder="SKU"  name="sku" ng-model="productDetails.sku" ng-maxlength="11" ng-required="true">
+											<span class="error" ng-show="add_new_product.sku.$error.maxlength">Quantity On Hand is Too long!</span>
+											<span ng-show="add_new_product.sku.$error.pattern">Allow Only Numeric </span>
+										</div>
+								</div>									 
+							</div> 
+							
+							<div class="row">                              									
+								<div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">
+											<label for="ref_item_no" class="col-sm-4">Reference Item No<span class="text-danger"></label>
+												<div class="col-sm-8">                                
+													<input type="text" class="form-control" id="ref_item_no" placeholder="Reference Item No" name="ref_item_no" ng-model="productDetails.ref_item_no" ng-maxlength="11">
+												</div>
+										</div>
+									</div>
+								</div>								
+								
+							    <div class="col-md-6">
+                                <label for="unit_weight" class="col-sm-4">Unit Weight<span class="text-danger"></label>
+									<div class="col-sm-8">                                
+										<input type="text" class="form-control" id="unit_weight" placeholder="Unit Weight" name="unit_weight" ng-model="productDetails.unit_weight" ng-maxlength="11">
+									</div>					
+								</div>	 
+							</div> 							
+							
+							<div class="row">                              									
+								<div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">
+											<label for="product" class="col-sm-4">Product Description<span class="text-danger"> </span></label>
+												<div class="col-sm-8">                               
+													<textarea name="product_des" id="product_des" placeholder="Product Description" class="form-control" rows="2" ng-model="productDetails.product_des" ng-maxlength="50"></textarea>
+											    </div>
+										</div>
+									</div>
+								</div>							   
+							</div> 
+																	
+							<div class="form-group">
+								<div align="center">
+									<button id="submit" type="submit" class="btn btn-success btn-w-md">Save</button>
+									<input type = "button" data-ng-click="cancelAdd()" class="btn btn-default btn-w-md" style="color:#fff;background-color:#a0a0a0"  value="Cancel"></input>
+								</div>
+							</div>
+						</div>												
+						</form>
+					</div>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

@@ -1,0 +1,380 @@
+<div class="page">
+    <section class="panel panel-default">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Show Shipment</strong></div>
+			<div class="panel-body">
+			<style>	
+			form {
+			  border : 1px solid #C0C0C0;
+			  padding: 50px;
+			} 
+			</style>
+			<div class="tab-content" id="myTabContent">
+			<div id="Order" class="tab-pane fade active in">
+            <div class="row">
+                <div class="form-group" style="margin-left:0px;margin-top:0px">					
+					<div class="col-md-12">
+					<form class="form-horizontal" role="form" ng-submit="editShipmentdtl(userForm.$valid)" name = "add_new_enterprise">
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input type="button" data-ng-click="createshipmentbox()" class="btn btn-default btn-w-md btn-info" value="Create Box"  ng-if="response_array_activebox.length == 0"/>
+									<button id="edit_shipment_details" type="submit" class="btn btn-default btn-w-md btn-primary">Edit</button>
+									<input id="delete_shipment_details" type = "button" data-ng-click="deleteShipmentDetails()" class="btn btn-default btn-w-md btn-danger"  value="Delete"></input>
+									<button data-ng-click="cancelShipmentEdit()" class="btn btn-default btn-w-md" style="color:#fff;background-color:#a0a0a0" ><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
+								</div>
+							</div>
+							
+						<div class="form-group" style="margin-top:10px" >							
+							<div class="row">                              									
+								<div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">
+											<label for="dateofshipment" class="col-sm-5">Date of Shipment </label>
+												<div class="col-sm-7" >
+												<p name="date_of_shipment">{{editShipmentdetails.date_of_shipment}}</p>
+												</div>
+										</div>
+									</div>
+								</div>								
+								
+							    <div class="col-md-6">
+                                  <label for="order" class="col-sm-5">Channel Name</label>
+										<div class="col-sm-7">
+											<p name="order">{{editShipmentdetails.channel_name}}</p>
+										</div>
+								</div> 								
+							</div>	 
+                        </div> 
+						
+						<div class="form-group" style="margin-top:-10px">							
+							<div class="row">                              									
+								 <div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">
+										<label for="order" class="col-sm-5">Carrier Name</label>
+											<div class="col-sm-7">
+												<p name="channel_name">{{editShipmentdetails.channel_name}}</p>
+											</div>
+										</div>
+									</div>
+								</div>								
+								
+							    <div class="col-md-6">
+                                   <label for="warehouse" class="col-sm-5">Warehouse Name</label>
+										<div class="col-sm-7">
+											<p name="warehouse">{{editShipmentdetails.warehouse}}</p>
+										</div>
+								</div> 								
+							</div>	 
+                        </div> 
+						
+						<div class="form-group" style="margin-top:-10px">							
+							<div class="row">                              									
+								 <div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">
+										<label for="carrier_service_name" class="col-sm-5">Carrier service Name</label>
+						
+											<div class="col-sm-7">
+												<p name="carrier_service_name">{{editShipmentdetails.carrier_service_name}}</p>
+											</div>
+										</div>
+									</div>
+								</div>								
+								
+							    <div class="col-md-6">
+                                <label for="recipient_name" class="col-sm-5">Recipient Name</label>
+									<div class="col-sm-7">
+										<p name="recipient_name">{{editShipmentdetails.recipient_name}}</p>
+									</div>
+								</div> 								
+							</div>	 
+                        </div> 
+						
+						<div class="form-group" style="margin-top:-15px">		
+							<label for="inputPassword3" class="col-sm-12" style="color:#0955d1">Shipping Details</label>
+						</div>
+						
+						<div class="form-group" style="margin-top:20px">							
+							<div class="row">                              									
+								 <div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">
+											 <label for="shippingaddress" class="col-sm-5"> Address1</label>
+												<div class="col-sm-7">
+													<p name="recipient_name">{{editShipmentdetails.shippingaddress}}</p>
+												</div>	
+										</div>
+									</div>
+								</div>								
+								
+							    <div class="col-md-6" >
+                                <label for="shippingaddress2" class="col-sm-5"> Address2</label>
+									<div class="col-sm-7">
+										<p name="shippingaddress2">{{editShipmentdetails.shippingaddress2}}</p>
+									 </div>	 
+								</div> 								
+							</div>	 
+                        </div> 
+						
+					
+							
+						<div class="form-group" style="margin-top:-10px">							
+							<div class="row">                              									
+								 <div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">
+											<label for="shipcountry" class="col-sm-5"> Country<span class="text-danger"> </span></label>
+												<div class="col-sm-7">
+													<p name="shippingaddress2">{{editShipmentdetails.shipcountry}}</p>
+												</div>	
+										</div>
+									</div>
+								</div>								
+								
+							    <div class="col-md-6">
+                                 <label for="shipstate" class="col-sm-5"> State<span class="text-danger"> </span></label>
+									<div class="col-sm-7">
+									<p name="shipstate">{{editShipmentdetails.shipstate}}</p>
+									</div>	
+								</div> 								
+							</div>	 
+                        </div> 
+										
+						<div class="form-group" style="margin-top:-10px">							
+							<div class="row">                              									
+								<div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">
+										<label for="shipcity" class="col-sm-5"> City<span class="text-danger"> </span></label>
+											<div class="col-sm-7">
+											<p name="shipcity">{{editShipmentdetails.shipcity}}</p>
+											</div>	
+										</div>
+									</div>
+								</div>								
+								
+							    <div class="col-md-6">
+								<label for="shipzip" class="col-sm-5"> Zip Code<span class="text-danger"> </span></label>
+									<div class="col-sm-7">
+									<p name="shipzip">{{editShipmentdetails.shipzip}}</p>
+									</div>	
+								</div> 								
+							</div>	 
+                        </div> 		
+
+						<div class="form-group" style="margin-top:-10px">							
+							<div class="row">                              									
+								<div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">
+										<label for="ship_email" class="col-sm-5">Email<span class="text-danger"> </span></label>
+											<div class="col-sm-7">
+											<p name="ship_email">{{editShipmentdetails.ship_email}}</p>
+											</div>
+										</div>
+									</div>
+								</div>	
+								
+								<div class="col-md-6">
+								<label for="shipping_account" class="col-sm-5"> Account<span class="text-danger"> </span></label>
+									<div class="col-sm-7">
+									<p name="shipping_account">{{editShipmentdetails.shipping_account}}</p>
+									</div>	
+								</div> 
+											
+							</div>	 
+                        </div> 	
+
+						<div class="form-group" style="margin-top:-10px">							
+							<div class="row">                              									
+								<div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">
+										<label for="Tracking Number" class="col-sm-5">Tracking Number</label>
+											<div class="col-sm-7">
+												<p name="tracking_number">{{editShipmentdetails.tracking_number}}</p>
+											</div>
+										</div>
+									</div>
+								</div>	
+								
+								<div class="col-md-6">
+								 <label for="lastname" class="col-sm-5">Shipment Cost<span class="text-danger"> </span></label>
+									<div class="col-sm-7">
+										<p name="shipping_cost">{{editShipmentdetails.shipping_cost}}</p>
+									</div>	
+								</div> 											
+							</div>	 
+                        </div> 
+
+						
+						
+						<div class="form-group" style="margin-top:-10px">							
+							<div class="row">                              									
+								<div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">
+										<label for="actual_shipment_cost" class="col-sm-5">Actual Shipment Cost</label>
+											<div class="col-sm-7">
+												<p name="actual_shipment_cost">{{editShipmentdetails.actual_shipment_cost}}</p>
+											</div>
+										</div>
+									</div>
+								</div>	
+								
+								<div class="col-md-6">
+								  <label for="lastname" class="col-sm-5">Additional Notes </label>
+									<div class="col-sm-7">
+										<p name="additional_notes">{{editShipmentdetails.additional_notes}}</p>
+									</div> 
+								</div> 											
+							</div>	 
+                        </div>
+						
+						
+					
+						<div class="form-group">
+							<label for="inputPassword3" class="col-sm-12 text-left" style="color:#0955d1">Item Details</label>
+						</div>
+					
+							<!-- <div class="form-group">
+								<label class="col-sm-3">Name</label>
+								<label class="col-sm-3">Order Qty</label>
+								<label class="col-sm-3">Balance Qty</label>
+								<label class="col-sm-3">Shipment Qty</label>
+							</div>	
+							
+							<div class="form-group" ng-repeat="item_Details in response_array">
+								<div class="col-sm-3">
+									<p name="order">{{item_Details.ItemName}}</p>
+								</div>
+								<div class="col-sm-3">
+									<p name="order">{{item_Details.Order_Qty}}</p>
+								</div>
+								<div class="col-sm-3">
+									<p name="order">{{item_Details.Balance_Qty}}</p>
+								</div>
+								<div class="col-sm-3"> 
+									
+									<p name="order"   >{{item_Details.Order_Qty - item_Details.Balance_Qty}}</p>
+								</div>
+							</div>					
+							
+							 -->
+							 
+							<table class="table table-bordered table-striped table-responsive">
+								<thead>								
+										<th>Name</th>                      
+																	
+										<th>Order Qty</th>                      
+													
+										<th>Balance Qty</th>                      
+																	
+										<th>Shipment Qty</th>    
+									
+								</thead>
+								<tbody>
+									<tr data-ng-repeat="item_Details in response_array">
+										<td>{{item_Details.ItemName}}</td>
+										<td>{{item_Details.Order_Qty}}</td>
+										<td>{{item_Details.Balance_Qty}}</td>
+										<td>{{item_Details.Order_Qty - item_Details.Balance_Qty}}</td>
+									</tr>
+								</tbody>
+							</table>
+							
+							<div id="shipmentBox Details"  ng-show="response_array_shipmentbox.length!=0" >
+							
+								<div class="form-group" >
+									<label for="inputPassword3" class="col-sm-12 text-left" style="color:#0955d1">Shipment Box Details</label>
+								</div>								
+								
+								<table class="table table-bordered table-striped table-responsive">
+								<thead>								
+										<th>Name</th>                      
+																	
+										<th>Length</th>                      
+													
+										<th>Width</th>                      
+																	
+										<th>Height</th>    
+										
+										<!-- <th>Options</th> -->
+										
+										<th>Options</th>
+								</thead>
+								<tbody>
+									<tr data-ng-repeat="shipmentbox_Details in response_array_shipmentbox">
+										<div class="col-md-2" data-ng-click="editshipmentbox(shipmentbox_Details.Shipment_Box_Id)">
+											<td>{{shipmentbox_Details.BoxName}}</td>
+											<td>{{shipmentbox_Details.BoxLength}}</td>
+											<td>{{shipmentbox_Details.BoxWidth}}</td>
+											<td>{{shipmentbox_Details.BoxHeight}}</td>
+										<!-- 	<td><p name="order">Delete</p> </td> -->
+										   <td> <input id="order" type = "button" ng-click="open(shipmentbox_Details.Shipment_Box_Id);" value="View"></input></td>
+											<!-- <td><button name="order" ng-click="open(shipmentbox_Details.Shipment_Box_Id);">View</button> </td> -->
+										</diV>
+									</tr>
+								</tbody>
+							</table>								
+							</div> <!---End Shippment box details -->
+						</form>
+							
+						<div id="shipmentBox Details"  ng-show="response_array_activebox.length!=0" >
+							<form class="form-horizontal" role="form" ng-submit="additemstobox(userForm.$valid)" name = "add_itemsbox">
+								<div class="form-group">
+								<input type="hidden" name="orderid" id="orderid" ng-model="shipmentboxitemdata.orderid"  />
+									<input type="hidden" name="shippmentboxid" ng-model="shipmentboxitemdata.shipmentboxid"  id="shippmentboxid"/>
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-12 text-center" style="color:#0955d1">Add items to this box {{response_array_activebox[0].BoxName}}</label>
+						     	</div>
+								<div class="form-group">
+									<label class="col-sm-3">Name</label>
+									<label class="col-sm-3">Order Qty</label>
+									<label class="col-sm-3">Balance Qty</label>
+									<label class="col-sm-3">Box Qty</label>								
+								</div>	
+							
+								<div class="form-group" ng-repeat="item_Details in response_array">
+									<div class="col-sm-3">
+										<p name="order"><input type="checkbox" name="itembox"  checklist-model="shipmentboxitemdata.itemid" id="{{item_Details.Order_Item}}"  
+										ng-checked="selection.indexOf(item_Details.Order_Item) > -1" ng-click="toggleSelection(item_Details.Order_Item)" required />&nbsp;{{item_Details.ItemName}}</p>
+									</div>
+								
+									<div class="col-sm-3">
+										<p name="order">{{item_Details.Order_Qty}}</p>
+									</div>
+								
+									<div class="col-sm-3">
+										<p name="order">{{item_Details.Balance_Qty}}</p>
+									</div>
+								
+									<div class="col-sm-3">
+										<p name="order">
+											<input type="number" name="{{item_Details.Order_Item}}" id="{{item_Details.Order_Item}}" 
+											ng-model="boxqty[item_Details.Order_Item]" min="1" max="{{item_Details.Order_Qty}}" ng-show="item_Details.Balance_Qty==0"/>
+										
+											<input type="number" name="{{item_Details.Order_Item}}" id="{{item_Details.Order_Item}}" 
+											ng-model="boxqty[item_Details.Order_Item]" min="1" max="{{item_Details.Balance_Qty}}"  ng-show="item_Details.Balance_Qty>0"/>
+										</p>
+									</div>	
+								</div>
+								
+									<div class="col-sm-3">
+										<button id="edit_shipment_details" type="submit" class="btn btn-success btn-w-md">Save</button>
+									</div>	
+								</div>								
+							</form>
+						</div>
+									
+										
+					</div>
+				</div>
+			</div>
+		</div>
+				
+				
+	</div>
+		</div>
+	</section>
+</div>
