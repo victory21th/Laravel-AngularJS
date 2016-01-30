@@ -1,0 +1,142 @@
+<div class="page">
+    <section class="panel panel-default">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Edit Inventory</strong></div>
+			<div class="panel-body">
+				<style>	
+				form {
+				  border : 1px solid #C0C0C0;
+				  padding: 50px;
+				  padding-bottom: 0px;
+				} 
+				</style>
+			<div class="row">
+                <div class="form-group">					
+					<div class="col-md-12">
+						<form class="form-horizontal" role="form" ng-submit="editInventorydetails(userForm.$valid)" name = "add_new_enterprise">
+								<div class="form-group" style="margin-top:-30px">
+									<div class="row">                              									
+										<div class="col-md-6">
+										   <div class="form-group">
+												<div class="col-sm-12">
+													<label for="channel" class="col-sm-4">Channel Name<span class="text-danger"> *</span></label>
+														<div class="col-sm-8">
+															<select class="form-control" name="channel" ng-model="inventoryDetails.channel" ng-options="response.id as response.name for response in channel_list" ng-required="true" disabled>
+																<option value="">--- Select Channel ---</option>
+															</select>
+														</div>
+												</div>
+											</div>
+										</div>								
+										
+										<div class="col-md-6">
+										   <label for="warehouse" class="col-sm-4">Warehouse Name<span class="text-danger"> *</span></label>
+												<div class="col-sm-8">
+													<select class="form-control" name="warehouse" ng-model="inventoryDetails.warehouse" ng-options="response.id as response.name for response in warehouse_list" ng-required="true" disabled >
+														<option value="">--- Select Warehouse ---</option>
+													</select>
+												</div>						
+										</div>	 
+									</div> 
+								
+									<div class="row">                              									
+										<div class="col-md-6">
+										   <div class="form-group">
+												<div class="col-sm-12">
+													<label for="inputEmail3" class="col-sm-4">Product Name<span class="text-danger"> *</span></label>
+													<input type="hidden" class="form-control" id="inventoryid" name="inventoryid"  ng-model="inventoryDetails.inventoryid">
+														<div class="col-sm-8">
+															<select class="form-control" name="product" ng-model="inventoryDetails.product" ng-options="response.id as response.name for response in product_list" ng-required="true" disabled>
+																<option value="">--- Select Product ---</option>
+															</select>
+														</div>
+												</div>
+											</div>
+										</div>								
+										
+										<div class="col-md-6">
+										   <label for="stock_count" class="col-sm-4">Quantity On Hand </label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control" id="stock_count" placeholder="Quantity On Hand" name="stock_count" ng-model="inventoryDetails.stock_count" disabled>
+												
+											</div>					
+										</div>	 
+									</div> 
+								
+									<div class="row">                              									
+										<div class="col-md-6">
+										   <div class="form-group">
+												<div class="col-sm-12">
+													<label for="re_order_level" class="col-sm-4">Re-Order Level<span class="text-danger"></label>
+														<div class="col-sm-8">
+															<input type="text" class="form-control" id="re_order_level" placeholder="Re-Order Level" name="re_order_level" ng-model="inventoryDetails.re_order_level">
+														</div>
+												</div>
+											</div>
+										</div>								
+										
+										<div class="col-md-6">
+											<label for="add_quantity" class="col-sm-4">Add Quantity<span class="text-danger"> </label>
+												<div class="col-sm-8">                                
+													<input type="text" name="add_quantity" id="add_quantity" placeholder="Add Quantity" class="form-control" ng-model="inventoryDetails.add_quantity" ng-maxlength="11" ng-pattern ="/^[0-9,-]*$/"/>
+												</div>
+										  			
+										</div>	 
+									</div> 
+								
+									<div class="row">                              									
+										<div class="col-md-6">
+										   <div class="form-group">
+												<div class="col-sm-12">
+													<label for="notes" class="col-sm-4">Last Cycle Count<span class="text-danger"> *</label>
+													<div class="col-sm-8">                                
+														<input type="text" name="last_cycle_count" id="last_cycle_count" placeholder="Last Cycle Count" class="form-control" ng-model="inventoryDetails.last_cycle_count"/>
+													</div>	
+												</div>
+											</div>
+										</div>								
+										
+										<div class="col-md-6">
+										   	<label for="last_adjustment_count" class="col-sm-4">Last Adjustment Count<span class="text-danger"> *</label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control" id="last_adjustment_count" placeholder="Last Adjustment Count" name="last_adjustment_count" ng-model="inventoryDetails.last_adjustment_count">
+												</div>		
+										</div>	 
+									</div> 								
+								
+									<div class="row">                              									
+										<div class="col-md-6">
+										   <div class="form-group">
+												<div class="col-sm-12">
+													<label for="notes" class="col-sm-4">Notes<span class="text-danger"></label>
+													<div class="col-sm-8">                                
+														<textarea name="notes" id="notes" placeholder="Notes" class="form-control" rows="2" ng-model="inventoryDetails.notes" ng-maxlength="200"></textarea>
+														<span class="error" ng-show="add_new_inventory.notes.$error.maxlength">Notes is Too long!</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										<div class="col-md-6">
+											<label for="reason" class="col-sm-4">Reason<span class="text-danger"></label>
+												<div class="col-sm-8">                                
+													<textarea name="reason" id="reason" placeholder="Reason" class="form-control" rows="2" ng-model="inventoryDetails.reason" ng-maxlength="50"></textarea>
+													<span class="error" ng-show="add_new_inventory.reason.$error.maxlength">Reason is Too long!</span>	
+												</div>										   					
+										</div>										
+									</div> 	
+									
+									<div class="form-group">
+										<div align="center">
+											<button id="submit" type="submit" class="btn btn-success btn-w-md">Update</button>
+											<input type = "button" data-ng-click="cancelInventoryEdit()" class="btn btn-default btn-w-md" style="color:#fff;background-color:#a0a0a0" value="Cancel"></input>
+										</div>
+									</div>									
+								</div>			
+						</form>
+					</div>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

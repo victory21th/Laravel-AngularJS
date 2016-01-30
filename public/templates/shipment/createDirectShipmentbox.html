@@ -1,0 +1,126 @@
+<!-- 
+	File Name 			: 	createDirectShipmentBox.html
+	File Description	:	Form to Add New Shipment Details
+	Created Date 		:	23 -March - 2015
+	Modified Date 		:	23 -March - 2015
+	Company				:	iExemplar
+	Created By			:	Manthiriyappan A
+	Contributors		:	Manthiriyappan A
+ -->
+
+<div class="page">
+    <section class="panel panel-default">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Add Direct Shipment Box</strong></div>
+			<div class="panel-body">
+			<style>	
+			form {
+			  border : 1px solid #C0C0C0;
+			  padding: 50px;
+			     padding-bottom: 0px;
+			} 
+			</style>
+			
+            <div class="row">
+                <div class="form-group" style="margin-left:0px;margin-top:0px">					
+					<div class="col-md-12">
+					<form class="form-horizontal" role="form" ng-submit="addshipmentbox(userForm.$valid)" name = "add_new_enterprise">
+													
+						<div class="form-group" style="margin-top:-20px" >							
+							<div class="row">                              									
+								 <div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">
+										<label for="order" class="col-sm-4">Tracking Number<span class="text-danger"> *</span></label>
+											<div class="col-sm-8">
+											<input type="text" class="form-control" id="shipment_boxname" placeholder="Tracking Number" name="shipment_boxname"  
+											ng-model="shipmentboxdata.shipment_boxname"   ng-minlength="1" ng-maxlength="40" required />
+											</div>
+										</div>
+									</div>
+								</div>								
+								
+							    <div class="col-md-6">
+                                   <label for="order" class="col-sm-4">Box Length</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="shipment_boxlength" placeholder="Box Length" name="shipment_boxlength"  
+										ng-model="shipmentboxdata.shipment_boxlength" ng-minlength="1" ng-maxlength="40">
+									</div>
+								</div> 								
+							</div>	 
+                        </div> 
+						
+						<div class="form-group" style="margin-top:-15px">							
+							<div class="row">                              									
+								 <div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">
+										 <label for="Tracking Number" class="col-sm-4">Box Width</label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control" id="shipment_boxwidth" name="shipment_boxwidth" 
+												ng-model="shipmentboxdata.shipment_boxwidth" placeholder="Box Width" >
+											</div>
+										</div>
+									</div>
+								</div>								
+								
+							    <div class="col-md-6">
+                                  <label for="lastname" class="col-sm-4">Box Height</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="shipment_boxheight" placeholder="Box Height"  
+										name="shipment_boxheight" ng-model="shipmentboxdata.shipment_boxheight"  >
+									</div>
+								</div> 								
+							</div>	 
+                        </div> 
+						
+						<div class="form-group">
+							<input type="hidden" name="itemid" id="itemid" ng-model="shipmentboxdata.itemid"  />
+							<div class="form-group">
+								<label for="inputPassword3" class="col-sm-12 text-center" style="color:#0955d1">Add items to this box {{response_array_activebox[0].BoxName}}</label>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Name</label>
+								<label class="col-sm-2">Shipment Qty</label> 
+								<label class="col-sm-3">Shipment Balance Qty</label>
+								<label class="col-sm-3">Box Qty</label>		
+							</div>	
+						
+							<div class="form-group" ng-repeat="item_Details in response_array">
+								<div class="col-sm-4">
+									<p name="order"><input type="checkbox" name="itembox"  checklist-model="shipmentboxdata.itemid" id="{{item_Details.Shipment_Item_Id}}"  
+									ng-checked="selection.indexOf(item_Details.Shipment_Item_Id) > -1" ng-click="toggleSelection(item_Details.Shipment_Item_Id)" required/>&nbsp;{{item_Details.ItemName}}</p>
+								</div>
+							
+								<div class="col-sm-2">
+									<p name="order">{{item_Details.Shipment_Qty}}</p>
+								</div> 
+							
+								<div class="col-sm-3">
+									<p name="order">{{item_Details.Ship_Balance_Qty}}</p>
+								</div> 
+							
+								<div class="col-sm-3">
+									<p name="order">										
+										<input type="number" name="{{item_Details.ItemName}}" id="{{item_Details.ItemName}}" 
+										ng-model="boxqty[item_Details.Shipment_Item_Id]" min="0" max="{{item_Details.Balance_Qty}}" ng-change="validateShipQty(item_Details.Ship_Balance_Qty,boxqty[item_Details.Shipment_Item_Id],item_Details.Shipment_Item_Id)" required/>
+									</p>
+								</div>									
+							</div>
+					
+
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10" style="margin-left:350px">
+									<button id="submit"	type="submit" class="btn btn-success btn-w-md">Save</button>
+									<input type = "button" data-ng-click="cancelShipmentBoxAdd()" class="btn btn-default btn-w-md" style="color:#fff;background-color:#a0a0a0" value="Cancel"></input>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+				
+		
+	</section>
+</div>

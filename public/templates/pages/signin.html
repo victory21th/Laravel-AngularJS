@@ -1,0 +1,58 @@
+<div class="page-signin">
+	
+    <div class="signin-header">
+        <section class="logo text-center" style="padding-left:34%;text-align:left;font-color:#FFFFFF">
+          <!--   <href="#/">{{main.brand}} -->
+		  <p style="color:#ffffff;">FULFILLDIRECT</p>
+        </section>
+    </div>	
+
+    <div class="signin-body">
+        <div class="container">
+            <div class="form-container">
+
+                <form class="form-horizontal"  ng-submit="login()" name="signin">
+                    <fieldset>
+                        <div class="form-group">
+                            <div class="btn-icon-lined btn-icon-round btn-icon-sm btn-default-light">
+                                <span class="glyphicon glyphicon-envelope"></span>
+                            </div>
+                            <input type="text"
+                                   class="form-control input-lg input-round text-center"
+                                   placeholder="Username"
+								   name = "email"
+								   ng-model="credentials.email" required
+								   ng-pattern = "/^[a-zA-Z0-9]*$/"
+								   ng-minlength="1" ng-maxlength="30">
+							<span class="error" ng-show="signin.email.$error.minlength">Username is Too short!</span>
+							<span class="error" ng-show="signin.email.$error.pattern"> Only Alphanumeric Characters are Allowed!!!</span>
+							<span class="error" ng-show="signin.email.$error.maxlength">Username is Too long!</span>
+                        </div>
+                        <div class="form-group">
+                            <div class="btn-icon-lined btn-icon-round btn-icon-sm btn-default-light">
+                                <span class="glyphicon glyphicon-lock"></span>
+                            </div>
+                            <input type="password"
+                                   class="form-control input-lg input-round text-center"
+                                   placeholder="Password"
+								   name = "password"
+								   ng-model="credentials.password" required
+								   ng-pattern = "/^[a-zA-Z0-9\s\-\#\!\@\$\_\&\~\%\+]*$/"
+								   ng-minlength="6" ng-maxlength="30">
+							<!-- <span class="error" style="color:#ffffff;" ng-show="signin.password.$error.minlength">Password is Too short!</span>
+							<span class="error" style="color:#ffffff;" ng-show="signin.password.$error.pattern"> Only Alphanumeric and !, @, #, $, _, -, &, ~, %, +, Characters are Allowed!!!</span>
+							<span class="error" style="color:#ffffff;" ng-show="signin.password.$error.maxlength">Password is Too long!</span> -->
+                        </div>
+                        <div class="form-group">
+							<div ng-show="invalidUsernamePassword">
+								<span style="color:#ffffff;">Invalid username or password</span>
+							</div>
+							<button type="submit" class="btn btn-primary btn-lg btn-round btn-block text-center" ng-disabled="!signin.$valid">Log In</button>
+                        </div>
+                    </fieldset>
+                </form>                
+            </div>
+        </div>
+    </div>
+
+</div>

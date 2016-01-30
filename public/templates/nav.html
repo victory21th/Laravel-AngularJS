@@ -1,0 +1,33 @@
+        
+<div class="nav-wrapper">
+    <ul id="nav"
+        class="nav"
+        data-ng-controller="NavCtrl"
+        data-slim-scroll
+        data-collapse-nav
+        data-highlight-active>
+        <li><a href="#/dashboard"> <i class="fa fa-dashboard"></i><span data-i18n="Dashboard"></span> </a></li>
+       
+		<li>          
+			 <a><i class="fa fa-credit-card"></i><span data-i18n="Inventory"></span></a>
+			 <ul>
+				<li><a ui-sref="inventorylist"><i class="fa fa-angle-right"></i><span data-i18n="Inventory"></span><span class="badge badge-danger">{{all_inventory_count_batch}}</span></a></li>
+				<li><a ui-sref="productlist"><i class="fa fa-angle-right"></i><span data-i18n="Product"></span><span class="badge badge-danger">{{all_product_count_batch}}</span></a></li>
+        	</ul>
+        </li>
+		
+        <li>
+            <a><i class="fa fa-file-text-o"></i><span data-i18n="Order"></span></a>
+			<ul>
+				<li><a ui-sref="orderlist"><i class="fa fa-angle-right"></i><span data-i18n="All"></span><span class="badge badge-danger">{{all_order_count_batch}}</span></a></li>
+                <!--<li><a ui-sref="neworderlist"><i class="fa fa-angle-right"></i><span data-i18n="New"></span><span class="badge badge-danger">{{new_order_count_batch}}</span></a></li>
+                <li><a ui-sref="inprogressorderlist"><i class="fa fa-angle-right"></i><span data-i18n="In-progress"></span><span class="badge badge-danger">{{inprogress_order_count_batch}}</span></a></li>
+                <li><a ui-sref="closedorderlist"><i class="fa fa-angle-right"></i><span data-i18n="Closed"></span><span class="badge badge-danger">{{closed_order_count_batch}}</span></a></li>-->
+            </ul>
+        </li>
+
+        <li>
+             <a ui-sref="startedShipmentList"><i class="fa fa-shopping-cart"></i><span data-i18n="Shipment"></span></a></li>
+        </li>
+    </ul>
+</div>

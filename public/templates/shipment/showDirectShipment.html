@@ -1,0 +1,205 @@
+<div class="page">
+    <section class="panel panel-default">
+        <div class="panel-heading">
+		<strong><span class="glyphicon glyphicon-th"></span> Show Direct Shipment</strong>
+			<div class="form-group" style = "background: none repeat scroll 0 0 #2c2b30; float:right; margin-top: -7px; color: white" >							
+				<div class="row">                              									
+					<div class="col-md-12">
+					    <div class="form-group">
+							<label for="inputPassword3" class="col-sm-3" style="padding-top:7px">Status<span class="text-danger"> *</span></label>
+								<div class="col-sm-5">
+									<select class="form-control" style="color:#000000;" name="status_name" id="status_name" ng-model="editShipmentdetails.status_name" ng-required="true" data-ng-disabled="!allowOrderStatusChange" ng-options="response.id as response.name for response in status_list">
+										<option value="">--- Select Status ---</option>
+
+									</select>
+								</div>
+								
+								<div class="col-sm-3">
+									<input type = "button" ng-click="updateStatus()" class="btn btn-default btn-w-md btn-primary"  value="Update" data-ng-disabled="!allowOrderStatusChange"></input>
+								</div>   
+						</div>													
+					</div>	 
+				</div> 
+			</div>		
+		</div>
+			
+		<div class="panel-body">
+			<style>	
+			form {
+			  border : 1px solid #C0C0C0;
+			  padding: 50px;
+			} 
+			</style>			
+            <div class="row">
+                <div class="form-group" style="margin-left:0px;margin-top:0px">					
+					<div class="col-md-12">
+					<form class="form-horizontal" role="form" ng-submit="editShipmentdtl(userForm.$valid)" name = "show_shipment">
+						
+						<div align="right">
+							<input type="button" data-ng-click="packingSlips()" class="btn btn-default btn-w-md btn-info" style="margin-top:-60px" value="Packing Slips" />								
+						</div>	
+						
+						<div class="form-group">							
+							<label class="col-sm-12 text-left" style="color:#0955d1;margin-top:-40px">Shipping Details</label>
+						</div>	
+						
+						<div class="form-group">
+							<div class="col-sm-12">							
+							</div>
+						</div>
+						
+						<table class="table table-bordered table-striped table-responsive" style="width:100%;margin-top:-40px">
+							<thead>	
+								<tr>
+									<th width="20%">Shipment No  <td  width="30%">{{editShipmentdetails.shipmentid}}</td> </th>	
+									<th width="20%">Date of Shipment  <td  width="30%">{{editShipmentdetails.date_of_shipment}}</td> </th>	
+								</tr>	
+								
+								<tr>
+									<th width="20%">Channel Name  <td  width="30%">{{editShipmentdetails.channel_name}}</td> </th>															
+									<th width="20%">Warehouse Name <td  width="30%">{{editShipmentdetails.warehouse}}</td></th>	
+								</tr>															
+																						
+								<tr>
+									<th width="20%">Recipient Name  <td  width="30%">{{editShipmentdetails.recipient_name}}</td> </th>																						
+									<th width="20%">Address 1<td  width="30%">{{editShipmentdetails.shippingaddress}}</td></th>
+								</tr>
+
+								<tr>
+									<th width="20%">Address 2<td  width="30%">{{editShipmentdetails.shippingaddress2}}</td></th>	
+									<th width="20%">City<td  width="30%">{{editShipmentdetails.shipcity}}</td></th>
+								</tr>
+								
+								<tr>
+									<th width="20%">State<td  width="30%">{{editShipmentdetails.shipstate}}</td></th>	
+									<th width="20%">Country<td  width="30%">{{editShipmentdetails.shipcountry}}</td></th>
+								</tr>
+								
+								<tr>
+									<th width="20%">Email<td  width="30%">{{editShipmentdetails.ship_email}}</td></th>	
+									<th width="20%">Zip Code<td  width="30%">{{editShipmentdetails.shipzip}}</td></th>									
+								</tr>
+								
+								<tr>
+									<th width="20%">Account<td  width="30%">{{editShipmentdetails.shipping_account}}</td></th>	
+									<th width="20%">Tracking Number<td  width="30%">{{editShipmentdetails.tracking_number}}</td></th>
+								</tr>
+
+								<tr>
+									<th width="20%">Signature Required<td  width="30%">{{editShipmentdetails.signature_required}}</td></th>	
+									<th width="20%">Email Notification<td  width="30%">{{editShipmentdetails.email_notification}}</td></th>
+								</tr>
+								
+								<tr>
+									<th width="20%">Shipment Cost<td  width="30%">{{editShipmentdetails.shipping_cost}}</td></th>	
+									<th width="20%">Actual Shipment Cost<td  width="30%">{{editShipmentdetails.actual_shipment_cost}}</td></th>
+								</tr>								
+							</thead>							
+						</table>												
+						
+						<div class="form-group" style="margin-top:-15px">		
+							<label for="inputPassword3" class="col-sm-12" style="color:#0955d1">Carrier Details</label>
+						</div>
+						
+						<table class="table table-bordered table-striped table-responsive" style="width:100%;margin-top:-20px">
+							<thead>	
+								<tr>
+									<th width="20%" >Carrier Name  <td  width="30%">{{editShipmentdetails.shipment_carrier}}</td> </th>	
+									<th width="20%" >Carrier service Name <td  width="30%">{{editShipmentdetails.carrier_service_name}}</td> </th>															
+								</tr>									
+								<tr>
+									<th width="20%">Additional Notes <td  width="30%">{{editShipmentdetails.additional_notes}}</td></th>	
+								</tr>															
+							</thead>							
+						</table>										
+					
+						<div class="form-group">
+							<label for="inputPassword3" class="col-sm-12 text-left" style="color:#0955d1">Item Details</label>
+						</div>
+																			 
+							<table class="table table-bordered table-striped table-responsive">
+								<thead>								
+									<th>Name</th> 																				
+									<th>Shipment Qty</th> 
+									<th>Shipment Balance Qty</th>
+								</thead>
+								
+								<tbody>								
+									<tr data-ng-repeat="item_Details in response_array">									    
+										<td>{{item_Details.ItemName}}</td>										
+										<td>{{item_Details.Shipment_Qty}}</td>
+										<td>{{item_Details.Ship_Balance_Qty}}</td>	
+									</tr>									
+								</tbody>
+							</table>
+							
+							<div id="shipmentBox Details"  ng-show="response_array_shipmentbox.length!=0" >
+								<div class="form-group" >
+									<label class="col-sm-12 text-left" style="color:#0955d1">Shipment Box Details</label>
+								</div>	
+								
+								<table class="table table-bordered table-striped table-responsive">
+									<thead>	
+											<th>Box ID</th> 
+									
+											<th>Tracking Number</th>                      
+																		
+											<th>Length</th>                      
+														
+											<th>Width</th>                      
+																		
+											<th>Height</th>    
+											
+											<th>Box Item Details</th> 
+											
+											<th>Actions</th>
+											
+											<th>Actions</th>
+																						
+									</thead>
+									<tbody>
+										<tr data-ng-repeat="shipmentbox_Details in response_array_shipmentbox">
+											<div class="col-md-2" data-ng-click="editshipmentbox(shipmentbox_Details.Shipment_Box_Id)">
+												<td>{{shipmentbox_Details.Shipment_Box_Id}}</td>
+												<td>{{shipmentbox_Details.BoxName}}</td>
+												<td>{{shipmentbox_Details.BoxLength}}</td>
+												<td>{{shipmentbox_Details.BoxWidth}}</td>
+												<td>{{shipmentbox_Details.BoxHeight}}</td>
+												<td> 
+												<table style="margin-top:0px" class="table table-bordered table-striped table-responsive">
+													<thead>								
+														<th>Item Name</th>												
+														<th>Shipment Qty</th>  																		
+													</thead>
+													<tbody>
+														<tr data-ng-repeat="item_Details in response_array_shipmentbox_items" ng-if="shipmentbox_Details.Shipment_Box_Id == item_Details.Shipment_Box_Id">	
+															<td>{{item_Details.Item_Name}}</td>
+															<td>{{item_Details.Boxed_Qty}}</td>															
+														</tr>																																									
+													</tbody>
+												</table>												
+												</td>
+												<td><input  data-ng-click="editshipmentbox(shipmentbox_Details.Shipment_Box_Id)" type="button" class="btn btn-default btn-w-md btn-primary"value="Edit" data-ng-show="allowShipmentEditDelete"></input></td>
+												<td><input  type ="button" data-ng-click="deleteShipmentBoxItemDetails(shipmentbox_Details.Shipment_Box_Id)" class="btn btn-default btn-w-md btn-danger"  value="Delete" data-ng-show="allowShipmentEditDelete"></input></td>
+											</div>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							
+								<div class="form-group" style="margin-left:250px;margin-bottom:-30px">
+									<div class="col-sm-12">
+										<input type="button" data-ng-click="createshipmentbox()" class="btn btn-default btn-w-md btn-info" value="Create Box" data-ng-show="allowShipBoxAdd" />
+										<button id="edit_shipment_details" type="submit" class="btn btn-default btn-w-md btn-primary" data-ng-show="allowShipmentEditDelete">Edit</button>
+										<input id="delete_shipment_details" type = "button" disabled="true" data-ng-click="deleteShipmentDetails()" class="btn btn-default btn-w-md btn-danger"  value="Delete" data-ng-show="allowShipmentEditDelete"></input>
+										<input type="button" data-ng-click="cancelShipmentEdit()" class="btn btn-default btn-w-md" style="color:#fff;background-color:#a0a0a0" value="Back"/>
+									</div>
+								</div>								
+							 <!---End Shippment box details-->
+					</form>														
+					</div>
+				</div>
+			</div>
+		</div>			
+	</section>
+</div>

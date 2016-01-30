@@ -1,0 +1,213 @@
+<!-- 
+	File Name 			: 	showPackingSlip.html
+	File Description	:	show Packing Slip Details
+	Created Date 		:	29 -May - 2015
+	Modified Date 		:	29 -May - 2015
+	Company				:	iExemplar
+	Created By			:	Manthiriyappan A
+	Contributors		:	Manthiriyappan A
+ -->
+
+<div class="page">
+    <section class="panel panel-default">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Show Packing Slip</strong></div>
+			<div class="panel-body">
+			<style>	
+			form {
+			  border : 1px solid #C0C0C0;
+			  padding: 50px;
+			  padding-bottom: 0px;
+			} 
+			hr {
+			 margin-left:-50px;
+			 margin-right: 0px;
+			 border : 1px solid #C0C0C0;
+			 width:1067px;
+			 } 
+			</style>
+			<div class="row">
+                <div class="form-group">					
+					<div class="col-md-12">
+					<form class="form-horizontal" role="form">
+						<div align="center" style="margin-top:-60px">
+							<label style="color:#00cccc"><strong><h2>Packing Slip</h2></strong></label>						
+						</div>
+						
+						<div class="form-group" style="margin-top:10px" >							
+							<div class="row">                              									
+								<div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">
+											<label for="order" class="col-sm-4">Channel Name<span class="text-danger"> </span></label>
+											<div>{{packingSlipDetails.channel_name}}</div>
+										</div>										
+									</div>
+								</div>								
+								
+							    <div class="col-md-6">
+									<label for="dateofshipment" class="col-sm-4">Date <span class="text-danger"></span></label>
+									<div>{{packingSlipDetails.date_of_shipment}}</div>
+								</div> 								
+							</div>	 
+                        </div> 		
+												
+						<div class="form-group" style="margin-top:-15px">							
+							<div class="row">							
+								<div class="col-md-6">									
+									<label for="order" class="col-sm-4">Client Address<span class="text-danger"> </span></label>
+									<div>{{packingSlipDetails.address1}}</div>	
+								</div> 
+							
+								<div class="col-md-6">
+                                   <label for="order" class="col-sm-4">Customer ID<span class="text-danger"></span></label>
+									<div>  - </div>
+								</div>															
+							</div>	 
+                        </div>
+						
+						
+						<div class="form-group" style="margin-top:10px" >							
+							<div class="row">                              									
+								<div class="col-md-6">
+                                   <div class="form-group">
+										<div class="col-sm-12">																					
+										</div>										
+									</div>
+								</div>								
+								
+							    <div class="col-md-6">								
+									<label for="order" class="col-sm-4">Shipment Id<span class="text-danger"> </span></label>
+										<div class="col-sm-8">	
+											<div>{{packingSlipDetails.shipment_id}}</div>
+										</div>
+								</div> 								
+							</div>	 
+                        </div> 					
+						<hr style="align:left; margin-top:-20px"></hr>	
+						<div class="form-group" style="margin-top:-15px">
+							<label for="order" class="col-sm-12" style="color:#0955d1;margin-top:5px"><strong>Shipping Address Details</strong></label>						
+						</div>
+						<div class="form-group" style="margin-top:10px">							
+							<div class="row">							
+								<div class="col-md-6">									
+									<label for="order" class="col-sm-4">Shipment To<span class="text-danger"> </span></label>
+										<div>{{packingSlipDetails.recipientName}}</div>
+								</div> 
+							
+								<div class="col-md-6">
+                                   <label for="order" class="col-sm-4">Bill To<span class="text-danger"> </span></label>
+										<div>{{packingSlipDetails.recipientName}}</div>											
+								</div>															
+							</div>	 
+                        </div>
+						
+						<div class="form-group" style="margin-top:5px">							
+							<div class="row">							
+								<div class="col-md-6">									
+									<label for="order" class="col-sm-4"></label>
+										<div>{{packingSlipDetails.city}}</div>
+								</div> 
+							
+								<div class="col-md-6">
+                                   <label for="order" class="col-sm-4"></label>
+										<div>{{packingSlipDetails.city}}</div>											
+								</div>															
+							</div>	 
+                        </div>
+						
+						<div class="form-group" style="margin-top:5px">							
+							<div class="row">							
+								<div class="col-md-6">									
+									<label for="order" class="col-sm-4"></label>
+										<div>{{packingSlipDetails.state}}</div>
+								</div> 
+							
+								<div class="col-md-6">
+                                   <label for="order" class="col-sm-4"></label>
+										<div>{{packingSlipDetails.state}}</div>											
+								</div>															
+							</div>	 
+                        </div>
+
+						<div class="form-group" style="margin-top:5px">							
+							<div class="row">							
+								<div class="col-md-6">									
+									<label for="order" class="col-sm-4"></label>
+										<div>{{packingSlipDetails.zip}}</div>
+								</div> 
+							
+								<div class="col-md-6">
+                                   <label for="order" class="col-sm-4"></label>
+										<div>{{packingSlipDetails.zip}}</div>											
+								</div>															
+							</div>	 
+                        </div>
+						
+					<div id="shipmentBox Details"  ng-show="shipmentbox_name.length!=0" >						
+						<hr style="align:left; margin-top:-15px"></hr>							
+						<div class="form-group" style="margin-top:-15px">
+							<label for="order" class="col-sm-12" style="color:#0955d1;margin-top:5px"><strong>Shipping Box Item Details</strong></label>						
+						</div>
+						
+						<table class="table table-bordered table-striped table-responsive">
+								<thead>								
+									<th>Box ID</th> 										
+									<th>Box Item Details </th>																			
+								</thead>
+								
+								 <tbody>										
+									<tr data-ng-repeat="shipping_box_name in shipmentbox_name">
+									   	<td>{{shipping_box_name.Shipment_Box_Id}}</td>
+										<td>
+										<table class="table table-bordered table-striped table-responsive">
+												<thead>	
+													<th>Item ID</th> 
+													
+													<th>Item Name</th> 
+								
+													<th>Item Description</th> 
+													
+													<th>SKU</th> 
+													
+													<th>Quantity Ordered</th> 
+													
+													<th>Box Qty</th> 
+													
+													<th>Qty Balance UnShipped</th> 
+													
+													<th>Tracking Number</th>  																		
+												</thead>
+												<tbody>
+													<tr data-ng-repeat="shipping_box_Details in shipmentbox_items" ng-if="shipping_box_name.Shipment_Box_Id == shipping_box_Details.Shipment_Box_Id">	
+														<td>{{shipping_box_Details.Product_Id}}</td>	
+														<td>{{shipping_box_Details.Item_Name}}</td>	
+														<td>{{shipping_box_Details.Product_Description}}</td>
+														<td>{{shipping_box_Details.SKU}}</td>										
+														<td>{{shipping_box_Details.Shipment_Qty}}</td>	
+														<td>{{shipping_box_Details.Boxed_Qty}}</td>
+														<td>{{shipping_box_Details.Ship_Balance_Qty}}</td>
+														<td>{{shipping_box_Details.BoxName}}</td>															
+													</tr> 																																									
+												</tbody>
+											</table>										
+										</td>										
+									</tr>																	
+								</tbody> 
+							</table> 
+					</div>
+							
+							<div class="form-group" style="margin-bottom:10px">
+								<div align="center" >									
+									<input type="button"  data-ng-click="packingSlipBack()" class="btn btn-default btn-w-md "  style="color:#fff;background-color:#a0a0a0" value="Back" />
+									
+									<input type="button"  data-ng-click="printIt()" class="btn btn-default btn-w-md "  style="color:#fff;background-color:#a0a0a0" value="Print" />
+								</div>							
+							</div>
+							
+						</form>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

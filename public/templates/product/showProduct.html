@@ -1,0 +1,65 @@
+<div class="page">
+    <section class="panel panel-default">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Product View</strong></div>
+			<div class="panel-body">
+			<style>	
+			form {
+			  border : 1px solid #C0C0C0;
+			  padding: 50px;
+			  padding-bottom: 0px;
+			} 
+			</style>
+			<div class="tab-content" id="myTabContent">
+			<div id="Order" class="tab-pane fade active in">
+            <div class="row">
+                <div class="form-group" style="margin-left:0px;margin-top:0px">					
+					<div class="col-md-12">
+					<form class="form-horizontal" role="form" ng-submit="editProductdetails(userForm.$valid)" name = "add_new_product">
+						<div class="form-group">		
+							<label for="inputPassword3" class="col-sm-12" style="color:#0955d1;margin-top:-40px">Product Details</label>
+						</div>
+						
+						<table class="table table-bordered table-striped table-responsive" style="width:100%;margin-top:-30px">
+							<thead>	
+								<tr>
+									<th width="20%" >Product No  <td  width="30%">{{productDetails.product_no}}</td> </th>	
+									<th width="20%" >Product Name  <td  width="30%">{{productDetails.product}}</td> </th>															
+								</tr>	
+								
+								<tr>
+									<th width="20%">Channel Name <td  width="30%">{{productDetails.channel_name}}</td></th>	
+									<th>Price <td>{{productDetails.price}}</td></th>																	
+								</tr>	
+								
+								<tr>
+								<th>SKU <td>{{productDetails.product_sku}}</td></th>
+								<th>Reference Item No  <td>{{productDetails.ref_item_id}}</td> </th>															
+													
+								</tr>	
+								<tr>											
+									<th>Unit Weight  <td>{{productDetails.unit_weight}}</td> </th>	
+									<th>Product Description  <td>{{productDetails.product_des}}</td> </th>
+								</tr>																
+								
+							</thead>							
+						</table>
+						
+						<div class="form-group" style="margin-left:300px" >
+							<div class="col-sm-12">
+								<button type="submit" class="btn btn-default btn-w-md btn-primary" data-ng-show="allowProductEditDelete">Edit</button>
+								<input type = "button" data-ng-click="deleteProductDetails()" class="btn btn-default btn-w-md btn-danger"  value="Delete" data-ng-show="allowProductEditDelete"></input>
+								<input type = "button" data-ng-click="cancelProductEdit()" class="btn btn-default btn-w-md "  style="color:#fff;background-color:#a0a0a0" value="Back"  ></input>
+							</div>
+						</div>	
+							
+							
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>		
+</div>
+</div>
+</section>
+</div>

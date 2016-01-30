@@ -1,0 +1,120 @@
+<div class="page page-dashboard" data-ng-controller="dashboardCtrl">
+
+	<!-- Stats -->
+    <div class="row">
+        <div class="col-lg-3 col-xsm-6">
+            <div class="panel mini-box">
+                <span class="btn-icon-lined btn-icon-round btn-icon-lg-alt btn-success">
+                    <i class="fa fa-credit-card"></i>
+                </span>
+                <div class="box-info">
+                    <p class="size-h2">6 <span class="size-h4"></span></p>
+                    <p class="text-muted"><span data-i18n="Inventory"></span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xsm-6">
+            <div class="panel mini-box">
+                <span class="btn-icon-lined btn-icon-round btn-icon-lg-alt btn-info">
+                    <i class="fa fa-file-text-o"></i>
+                </span>
+                <div class="box-info">
+                    <p class="size-h2">12 <span class="size-h4"></span></p>
+                    <p class="text-muted"><span data-i18n="Order"></span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xsm-6">
+            <div class="panel mini-box">
+                <span class="btn-icon-lined btn-icon-round btn-icon-lg-alt btn-warning">
+                    <i class="fa fa-dollar"></i>
+                </span>
+                <div class="box-info">
+                    <p class="size-h2">2</p>
+                    <p class="text-muted"><span data-i18n="Direct Shipment"></span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xsm-6">
+            <div class="panel mini-box">
+                <span class="btn-icon-lined btn-icon-round btn-icon-lg-alt btn-danger">
+                    <i class="fa fa-shopping-cart"></i>
+                </span>
+                <div class="box-info">
+                    <p class="size-h2">1</p>
+                    <p class="text-muted"><span data-i18n="Shipment"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end stats -->
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-body" data-ng-controller="flotChartCtrl">
+                    <div data-flot-chart
+                         data-data="line1.data"
+                         data-options="line1.options"
+                         style="width: 100%; height: 372px;"
+                         ></div>
+                </div>
+            </div>              
+        </div>
+        <div class="col-lg-4">
+
+            <div class="row" data-ng-controller="chartCtrl">
+                
+                <div class="col-xsm-6">
+                    <div class="panel panel-default">
+                        <div class="panel-body text-center">
+                            <div easypiechart options="easypiechartsm1.options" percent="easypiechartsm1.percent" class="easypiechart easypiechart-sm">
+                                <span class="pie-percent" ng-bind="easypiechartsm1.percent"></span>
+                            </div>
+                            <p class="text-center text-muted">Total Inventory</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xsm-6">
+                    <div class="panel panel-default">
+                        <div class="panel-body text-center">
+                            <div easypiechart options="easypiechartsm2.options" percent="easypiechartsm2.percent" class="easypiechart easypiechart-sm">
+                                <span class="pie-percent" ng-bind="easypiechartsm2.percent"></span>
+                            </div>
+                            <p class="text-center text-muted">New Order</p>
+                        </div>
+                    </div>
+                </div>
+
+              	<!--<div class="col-xsm-6">
+                    <div class="panel panel-default">
+                        <div class="panel-body text-center">
+                            <div easypiechart options="easypiechartsm3.options" percent="easypiechartsm3.percent" class="easypiechart easypiechart-sm">
+                                <span class="pie-percent" ng-bind="easypiechartsm3.percent"></span>
+                            </div>
+                            <p class="text-center text-muted">Created Packing</p>
+                        </div>
+                    </div>
+                </div>-->
+
+                <div class="col-xsm-6">
+                    <div class="panel panel-default">
+                        <div class="panel-body text-center">
+                            <div easypiechart options="easypiechartsm4.options" percent="easypiechartsm4.percent" class="easypiechart easypiechart-sm">
+                                <span class="pie-percent" ng-bind="easypiechartsm4.percent"></span>
+                            </div>
+                            <p class="text-center text-muted">Ready Shipment</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+
+
+
+</div>
+  

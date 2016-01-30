@@ -1,0 +1,77 @@
+<!-- 
+	File Name 			:   bulkImportOrder.html
+	File Description	:	Form to Bulk Import Order Details
+	Created Date 		:	11 - Jun - 2015
+	Modified Date     	:	11 - Jun - 2015
+	Company				:	iExemplar
+	Created By			:	Mohanraj S
+	Contributors		:	Mohanraj S
+ -->
+ 
+<div class="page">
+	<section class="panel panel-default">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Bulk Order Uploader </strong></div>
+        <div class="panel-body">			
+			<div class="block center" style="float: left;">
+				<ng-csv-import 
+					class="import"
+					content="csv.content"
+					header="csv.header" 
+					separator="csv.separator"
+					result="csv.result"> </ng-csv-import>
+			</div>
+			<div class="block right" style="float: right;"> 
+				<button ng-if="csv.result != null" class="btn btn-primary btn-w-md" type="submit" id="import-order" ng-click="addorderdetails(csv.result);"> Import Data </button> 
+			</div>
+			
+			<div class="space"></div>
+			<div ng-if="csv.content" class="block left" style="margin-top:25px;">
+				<div class="table-responsive" style="overflow-x: hidden;">
+
+						<label for="order" class="col-sm-2">Channel Name<span class="text-danger"> *</span></label>
+
+					<div class="col-sm-4">
+						<select class="form-control" name="channel_name"  ng-change="channelSelect()" ng-model="orderdetails.channel_name" ng-options="response as response.name for response in channel_list" ng-required="true" >
+							<option value="">--- Select Channel Name ---</option>
+						</select>
+					</div></div><br/>
+					<table class="table table-hover1">
+						<thead class="bc_issue_header" style="background-color: #1187ab; color:#FFFFFF;">
+							<tr style="border: 3px solid #34323A;">
+								<th style="text-align: center;"> S.No </th> 
+								<th style="text-align: center;"> Order ID </th>
+								<th style="text-align: center;"> Order Date </th>
+								<th style="text-align: center;"> Order Status </th>
+								<th style="text-align: center;"> First Name </th>
+								<!--<th style="text-align: center;"> Address </th>-->
+								<th style="text-align: center;"> Product Name </th>
+								<th style="text-align: center;"> Quantity </th>
+							</tr>
+						</thead>
+						<tbody>							 
+							<tr ng-repeat = "orderList in csv.result">
+								<td style="color: #000; border: 3px solid #34323A; text-align: center;"> {{ $index + 1 }} </td>
+								<td style="color: #000; border: 3px solid #34323A;"> {{ orderList.Order_ID }} </td>
+								<td style="color: #000; border: 3px solid #34323A;"> {{ orderList.Order_Date }} </td>
+								<td style="color: #000; border: 3px solid #34323A; text-align: center;"> {{ orderList.Order_Status }}</td>
+								<td style="color: #000; border: 3px solid #34323A; text-align: center;"> {{ orderList.Ship_FirstName }}</td>
+								<!--<td style="color: #000; border: 3px solid #34323A; text-align: center;"> 
+									{{ orderList.Ship_Address1 }} {{ orderList.Ship_Address2 }} {{ orderList.Ship_City }} {{ orderList.Ship_StateProvince }} 
+									{{ orderList.Ship_Country }} {{ orderList.Ship_PostalCode }} 
+								</td>-->
+								<td style="color: #000; border: 3px solid #34323A; text-align: center;"> {{ orderList.Product_Name }}</td>
+								<td style="color: #000; border: 3px solid #34323A; text-align: center;"> {{ orderList.Product_Quantity }}</td>
+							</tr>							
+						</tbody>
+					</table>
+				</div>
+				<!--<div class="content"><pre>{{ toPrettyJSON(csv.result, 2) }}</pre></div>-->
+				
+			</div>	
+			<div class="page-spinner-bar hide" ng-spinner-bar="">
+				<img src="images/loading.gif">
+			</div>
+        </div>
+    </section>   
+
+</div>
